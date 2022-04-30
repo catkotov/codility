@@ -1,4 +1,4 @@
-package org.cat.eye.codility;
+package org.cat.eye.codility.les1;
 
 /*
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both
@@ -22,10 +22,8 @@ longest binary gap is of length 5. Given N = 32 the function should return 0, be
 
 Write an efficient algorithm for the following assumptions:
 
-N is an integer within the range [1..2,147,483,647].
+ - N is an integer within the range [1..2,147,483,647].
 */
-
-import java.util.Arrays;
 
 public class BinaryGap {
 
