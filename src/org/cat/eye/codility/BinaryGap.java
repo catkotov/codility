@@ -38,7 +38,7 @@ public class BinaryGap {
 
         int count = 0;
 
-        for(char ch : strN.toCharArray()) {
+        for(var ch : strN.toCharArray()) {
             if (ch == '0') {
                 count++;
             } else {
