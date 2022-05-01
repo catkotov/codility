@@ -58,8 +58,6 @@ Write an efficient algorithm for the following assumptions:
 
  */
 
-import java.util.Arrays;
-
 public class MaxCounters {
 
     public static int[] solution(int N, int[] A) {
