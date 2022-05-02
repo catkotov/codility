@@ -28,16 +28,19 @@ public class CountDiv {
         }
 
         long result = 0;
-        long tmp = A;
+        long tmpA = A;
+        long tmpB = B;
 
         if (A % K != 0) {
-            int delta = K - A % K;
-            tmp = A + delta;
+            tmpA = A + (K - A % K);
         }
 
-        while (tmp <= B) {
-            result++;
-            tmp += K;
+        if (B % K != 0) {
+            tmpB =  B - B % K;
+        }
+
+        if (tmpB >= tmpA) {
+            result = (tmpB - tmpA) / K + 1;
         }
 
         return (int) result;
