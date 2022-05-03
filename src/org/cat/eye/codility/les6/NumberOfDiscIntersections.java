@@ -40,18 +40,26 @@ Write an efficient algorithm for the following assumptions:
 
  */
 
+import java.util.Arrays;
+
 public class NumberOfDiscIntersections {
 
-    public static int solution(int[] R) {
+    public static int solution(int[] A) {
         int result = 0;
 
-        for (int i = 0; i < R.length-1; i++) {
-            for (int j = i+1; j < R.length; j++) {
-                if (Math.abs(i - j) <= (long) R[i] + (long) R[j]) {
+        int[] R = Arrays.copyOf(A, A.length);
+        Arrays.sort(R);
+
+        for (int i = 0; i < A.length-1; i++) {
+            for (int j = i+1; j < A.length; j++) {
+                if (Math.abs(j-i) > (long) R[R.length-1] + (long) R[R.length-2])
+                    break;
+                else if (Math.abs(i - j) <= (long) A[i] + (long) A[j]) {
                     result++;
                     if (result > 10000000)
                         return -1;
                 }
+
             }
         }
 
