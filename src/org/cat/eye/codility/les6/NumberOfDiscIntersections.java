@@ -59,7 +59,6 @@ public class NumberOfDiscIntersections {
                     if (result > 10000000)
                         return -1;
                 }
-
             }
         }
 
