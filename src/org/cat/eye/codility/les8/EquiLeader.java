@@ -71,10 +71,8 @@ public class EquiLeader {
         for (int i = 0; i < A.length; i++) {
             int[] B = Arrays.copyOfRange(A, 0, i+1);
             int[] C = Arrays.copyOfRange(A, i+1, A.length);
-            Integer leaderB = getLeader(B);
-            Integer leaderC = getLeader(C);
 
-            if (leader.equals(leaderB) && leader.equals(leaderC)) {
+            if (isLeader(B, leader) && isLeader(C, leader)) {
                 result++;
             }
         }
@@ -106,17 +104,21 @@ public class EquiLeader {
         } else
             return null;
 
-        int count = 0;
+        if (isLeader(A, candidate))
+            leader = candidate;
 
+        return leader;
+    }
+
+    private boolean isLeader(int[] A, int candidate) {
+
+        int count = 0;
         for (int j : A) {
             if (j == candidate) {
                 count++;
             }
         }
-
-        if (count > A.length / 2)
-            leader = candidate;
-
-        return leader;
+        return count > A.length / 2;
     }
+
 }
