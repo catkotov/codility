@@ -46,10 +46,18 @@ Write an efficient algorithm for the following assumptions:
 
  */
 
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class EquiLeader {
+
+    public static void main(String[] argv) {
+        int[] A = {4,3,4,4,4,2};
+
+        EquiLeader equiLeader = new EquiLeader();
+        System.out.println("result: " + equiLeader.solution(A));
+    }
 
     public int solution(int[] A) {
 
@@ -60,7 +68,16 @@ public class EquiLeader {
             return 0;
         }
 
+        for (int i = 0; i < A.length; i++) {
+            int[] B = Arrays.copyOfRange(A, 0, i+1);
+            int[] C = Arrays.copyOfRange(A, i+1, A.length);
+            Integer leaderB = getLeader(B);
+            Integer leaderC = getLeader(C);
 
+            if (leader.equals(leaderB) && leader.equals(leaderC)) {
+                result++;
+            }
+        }
 
         return result;
     }
@@ -87,7 +104,7 @@ public class EquiLeader {
         if (!stack.isEmpty()) {
             candidate = stack.pollFirst();
         } else
-            return -1;
+            return null;
 
         int count = 0;
 
@@ -97,7 +114,7 @@ public class EquiLeader {
             }
         }
 
-        if (count <= A.length / 2)
+        if (count > A.length / 2)
             leader = candidate;
 
         return leader;
