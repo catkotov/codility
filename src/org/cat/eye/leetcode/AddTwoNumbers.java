@@ -35,6 +35,7 @@ public class AddTwoNumbers {
 
         return  result.next;
     }
+
     public static class ListNode {
 
         int val;
