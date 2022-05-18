@@ -19,22 +19,20 @@ public class RemoveNthNodeFromEndList {
             delPointer = delPointer.next;
         }
 
-
-
-//        if (delPointer.next == head && head == end) {
-//            head = null;
-//        } else if (delPointer.next == head) {
-//            delPointer.next.next = null;
-//            delPointer.next = end;
-//            head = delPointer.next;
-//        } else if (delPointer.next == end) {
-//            delPointer.next = null;
-//        } else {
-//            delPointer.next.next = null;
-//            delPointer.next = end;
-//        }
+        if (delPointer.next == head) {
+            removeNode(delPointer);
+            head = delPointer.next;
+        } else {
+            removeNode(delPointer);
+        }
 
         return head;
+    }
+
+    private void removeNode(ListNode delPointer) {
+        ListNode tmp = delPointer.next;
+        delPointer.next = tmp.next;
+        tmp.next = null;
     }
 
     public static class ListNode {
