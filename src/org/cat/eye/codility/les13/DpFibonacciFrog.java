@@ -16,7 +16,7 @@ public class DpFibonacciFrog {
 
         for (int i = 1; i <= A.length + 1; i++) {
             for (int j = 0; j < fib.length; j++) {
-                if ((i == A.length +1 || A[i-1] == 1) && i - fib[j] >= 0) {
+                if ((i == A.length + 1 || A[i-1] == 1) && i - fib[j] >= 0) {
                     DP[i] = Math.min(DP[i], 1 + DP[i - fib[j]]);
                 }
             }
