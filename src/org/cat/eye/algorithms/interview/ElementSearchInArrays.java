@@ -1,7 +1,5 @@
 package org.cat.eye.algorithms.interview;
 
-import java.util.logging.StreamHandler;
-
 /**
  * Даны три неубывающих массива чисел. Найти число, которое присутствует во всех трех массивах.
  * Input: [1,2,4,5], [3,3,4], [2,3,4,5,6]
@@ -10,7 +8,7 @@ import java.util.logging.StreamHandler;
  */
 public class ElementSearchInArrays {
 
-    public static int searchSameElement(int[] a, int[] b, int[] c) {
+    public static int searchSameElement(int[] a, int[] b, int[] c) throws Exception {
 
         int i = 0, j = 0, k = 0;
 
@@ -27,7 +25,7 @@ public class ElementSearchInArrays {
 
             flag = false;
 
-            while (i < a.length && a[i] < max) {
+            while (i < a.length - 1 && a[i] < max) {
 
                 i++;
                 flag = true;
@@ -37,7 +35,7 @@ public class ElementSearchInArrays {
                 }
             }
 
-            while (j < b.length && b[j] < max) {
+            while (j < b.length - 1 && b[j] < max) {
 
                 j++;
                 flag = true;
@@ -47,7 +45,7 @@ public class ElementSearchInArrays {
                 }
             }
 
-            while (k < c.length && c[k] < max) {
+            while (k < c.length - 1 && c[k] < max) {
 
                 k++;
                 flag = true;
@@ -59,18 +57,23 @@ public class ElementSearchInArrays {
 
         } while (flag);
 
-        System.out.println("a = " + a[i] + ", b = " + b[j] + ", c = " + c[k]);
-
-        return a[i];
+        if (a[i] == b[j] && b[j] == c[k])
+            return a[i];
+        else
+            throw new Exception("В массивах нет одинаковых элементов");
     }
 
     public static void main(String[] argv) {
 
-        int[] a = {1, 2, 4, 5};
-        int[] b = {3, 3, 5};
+        int[] a = {1, 2, 4, 7};
+        int[] b = {3, 3, 4};
         int[] c = {2, 3, 4, 5, 6};
 
-        ElementSearchInArrays.searchSameElement(a, b, c);
+        try {
+            System.out.println(ElementSearchInArrays.searchSameElement(a, b, c));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
