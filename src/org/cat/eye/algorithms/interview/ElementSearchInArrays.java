@@ -14,10 +14,10 @@ public class ElementSearchInArrays {
 
         int max = a[i];
 
-        if (b[j] > max)
-            max = b[j];
-        if (c[k] > max)
-            max = c[k];
+        if (b[0] > max)
+            max = b[0];
+        if (c[0] > max)
+            max = c[0];
 
         boolean flag;
 
@@ -26,30 +26,24 @@ public class ElementSearchInArrays {
             flag = false;
 
             while (i < a.length - 1 && a[i] < max) {
-
                 i++;
                 flag = true;
-
                 if (a[i] >= max ) {
                     max = a[i];
                 }
             }
 
             while (j < b.length - 1 && b[j] < max) {
-
                 j++;
                 flag = true;
-
                 if (b[j] >= max ) {
                     max = b[j];
                 }
             }
 
             while (k < c.length - 1 && c[k] < max) {
-
                 k++;
                 flag = true;
-
                 if (c[k] >= max ) {
                     max = c[k];
                 }
