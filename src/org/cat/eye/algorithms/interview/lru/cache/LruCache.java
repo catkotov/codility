@@ -30,4 +30,9 @@ public class LruCache<K, V> {
         return value;
     }
 
+    public void write(K key, V value) {
+        cache.remove(key);
+        dao.write(key, value);
+    }
+
 }
