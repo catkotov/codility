@@ -1,12 +1,10 @@
 package org.cat.eye.leetcode;
 
-import javafx.util.Pair;
-
 import java.util.*;
 
 public class VerticalOrderTraversal {
 
-    Map<Integer, ArrayList<Pair<Integer, Integer>>> columnTable = new HashMap();
+    Map<Integer, ArrayList<Pair<Integer, Integer>>> columnTable = new HashMap<>();
     int minColumn = 0, maxColumn = 0;
 
     private void DFS(TreeNode node, Integer row, Integer column) {
@@ -14,10 +12,10 @@ public class VerticalOrderTraversal {
             return;
 
         if (!columnTable.containsKey(column)) {
-            this.columnTable.put(column, new ArrayList<Pair<Integer, Integer>>());
+            this.columnTable.put(column, new ArrayList<>());
         }
 
-        this.columnTable.get(column).add(new Pair<Integer, Integer>(row, node.val));
+        this.columnTable.get(column).add(new Pair<>(row, node.val));
         this.minColumn = Math.min(minColumn, column);
         this.maxColumn = Math.max(maxColumn, column);
         // preorder DFS traversal
@@ -114,7 +112,7 @@ public class VerticalOrderTraversal {
 
     public List<List<Integer>> verticalOrder(TreeNode root) {
 
-        Map<TreeNode, List<Integer>> valueToColumn = new LinkedHashMap<>();
+        LinkedHashMap<TreeNode, List<Integer>> valueToColumn = new LinkedHashMap<>();
         Map<Integer, List<Integer>> columns = new LinkedHashMap<>();
 
         verticalPostOrder(root, valueToColumn, 0);
@@ -127,7 +125,7 @@ public class VerticalOrderTraversal {
             TreeNode entry = queue.poll();
             if (entry != null) {
 
-                Integer column = valueToColumn.get(entry).removeFirst();
+                Integer column = valueToColumn.get(entry).remove(0);
 
                 if (columns.get(column) == null) {
                     List<Integer> tmp = new LinkedList<>();
