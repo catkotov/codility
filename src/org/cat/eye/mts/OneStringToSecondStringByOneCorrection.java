@@ -1,4 +1,4 @@
-package org.cat.eye.algorithms.interview;
+package org.cat.eye.mts;
 
 /**
  * Проверить можно ли получить одну строку из второй,
